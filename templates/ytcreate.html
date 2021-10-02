@@ -1,0 +1,102 @@
+{%extends 'base.html'%}
+{%block content%}
+{%load static%}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet"> 
+<style> 
+    input[type=text] {
+      width: 100%;
+      padding: 6px 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid red;
+      border-radius: 4px;
+    }
+label{
+  font-family: "Times New Roman", Times, serif;
+  
+  font-size: 0.5cm;
+}
+body {
+  background-image: url('{%static "assets\images\courses-bg.jpg"%}');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+}
+
+h1{
+    font-family: 'Audiowide', cursive;
+    font-size: 2cm;
+    color: orange;
+}
+h2{
+    font-family: 'Audiowide', cursive;
+    font-size: 1cm;
+    color: orange;
+}
+
+button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+button:hover {background-color: #3e8e41}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+label{
+    font-family: 'Audiowide', cursive;
+    font-size: 0.5cm;
+    color: orange;
+}
+p{
+    font-family: 'Audiowide', cursive;
+ 
+    color: orange;
+}
+
+    
+    </style>
+<body style="padding-top: 70px;">
+
+    <link rel="stylesheet" href="{%static 'assets/css/owl.css'%}">
+    <script src="{%static 'assets/js/owl-carousel.js'%}"></script>
+  
+  <!-- ***** Main Banner Area Start ***** -->
+  <section class="section main-banner" id="top" data-section="section1">
+      
+      
+      
+      <form style="padding-top: 70px;" action="" method="POST" enctype="multipart/form-data">
+        
+        {%csrf_token%}
+       
+        <h1>Welcome {{user.username}}</h1> 
+        <h2> Upload Video Here!!!!</h2> <br>
+
+        
+        <p><label for="id_yname">Course Name:</label> <br> 
+          <input type="text" name="yname" maxlength="200" required="" id="id_yname"></p>
+<p><label for="id_ydesc">Video Description:</label>  <br>
+   <textarea name="ydesc" cols="40" rows="10" required="" id="id_ydesc"></textarea></p>
+<p><label for="id_ylink">Video Link:</label>  
+  <input type="url" name="ylink" maxlength="200" required="" id="id_ylink"></p>
+<p><label for="id_ytmage">Thumbnail Image:</label> 
+   <input type="file" name="ytmage" accept="image/*" id="id_ytmage"></p>
+      <button type="submit">Upload</button>
+      <br>
+    </form>
+</section>
+</body>
+{%endblock%}
